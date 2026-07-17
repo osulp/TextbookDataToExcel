@@ -15,7 +15,8 @@ from helpers.utilities import get_directory
 
 
 def process_name(base, flag):
-    """"""
+    """Updates the name iteration and flag value to cycle through
+    different results."""
     if flag == 1:
         temp_list = base.split(" ")
         base = ""

@@ -38,10 +38,3 @@ class AddedGUI:
             column=self.column, row=self.row, sticky=tk.W, padx=5, pady=1
         )
         self.row += 1
-
-
-def make_window(title, text):
-    gui_window = AddedGUI(title=title)
-    gui_window.reset()
-    gui_window.add_label(text)
-    return gui_window

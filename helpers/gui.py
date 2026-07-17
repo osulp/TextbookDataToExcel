@@ -54,11 +54,6 @@ class GUI:
         for child in self.main_tab.winfo_children():
             child.destroy()
 
-    # used for updating the main screen message
-    def print_main(self, message):
-        self.reset_main()
-        ttk.Label(self.main_tab, text=message).grid(column=0, row=0, sticky=tk.W)
-
     # building the main tab
     def build_main(self):
         self.reset_main()
