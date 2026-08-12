@@ -120,8 +120,11 @@ def make_excel_sheet(open_outlook=None, open_alma=None, gui_class=None):
     book_clean, author_clean = get_string_cleaners()
 
     dataframe = pd.DataFrame()
+
     for header in main_headers:
         dataframe[f"{header}"] = []
+        # force header frame dtype to be object
+        dataframe[f"{header}"] = dataframe[f"{header}"].astype(object)
 
     book_list = []
 
