@@ -8,7 +8,7 @@ As a forewarning, this is a very large script, split across several files to hel
 ## Getting Started
 This script requires having Google Chrome and Python installed.
 
-To download the script, navigate to [here](https://github.com/meows4h/TextbookDataToExcel/releases/). Go to the latest release and download the ZIP file.
+To download the script, navigate to the [Latest Release](releases/latest). Download the ZIP file.
 
 Setting up the script is fairly easy, but it requires some data to be loaded beforehand. A CORE report of the desired term must be exported into a csv file and placed within `helpers/csv/` as `enrollment.csv`. This directory and file name requirement can be changed in `config.ini`, but is not required whatsoever.
 
