@@ -152,7 +152,7 @@ def make_excel_sheet(open_outlook=None, open_alma=None, gui_class=None):
         department = row[1]
         dep_arr = department.split(":")
         subj_code = dep_arr[0].strip()
-        course_code = f"{subj_code}{row[2]}".strip()
+        course_code = f"{subj_code} {row[2]}".strip()
 
         section = get_int(row[3])
         if section is None:
