@@ -3,7 +3,12 @@ import configparser
 import pandas as pd
 from openpyxl.styles import Alignment
 from requests.structures import CaseInsensitiveDict
+from titlecase import titlecase
 
+def abbreviations(word, **kwargs):
+    """Callback used for titlecase()"""
+    if word.upper() in ('IT', 'HBP', 'MIS', 'MBA', 'OSU', 'CMOS'):
+        return word.upper()
 
 def get_int(value):
     """Gets int value, returns None if empty."""
@@ -25,10 +30,14 @@ def get_int(value):
 def get_clean(cleaner, name):
     """Uses cleaner and input to remove every phrase in cleaner
     from the input."""
-    name = name.title()
-    name = name.strip()
+
+    if 'eBook' in name or 'EBook' in name or 'Ebook' in name or 'EBOOK' in name or 'Etext' in name:
+        name = titlecase(name.lower(), callback=abbreviations)
+    else:
+        name = titlecase(name, callback=abbreviations)
+
     for phrase in cleaner:
-        name = name.replace(phrase.title(), "")
+        name = name.replace(titlecase(phrase), "")
     name = name.strip()
 
     # making letters lowercase after '
@@ -67,17 +76,6 @@ def get_clean(cleaner, name):
         new_name = new_name.replace("  ", " ")
         new_name = new_name.replace("\t", "")
         new_name = new_name.replace("\n", "")
-
-    prior = ""
-    for jdx, letter in enumerate(new_name):
-        if jdx == 0:
-            prior = letter
-            continue
-        if prior == " ":
-            new_name = list(new_name)
-            new_name[jdx] = new_name[jdx].upper()
-            new_name = "".join(new_name)
-        prior = letter
 
     return f"{new_name}"
 
@@ -283,6 +281,7 @@ def get_string_cleaners():
     # duplicates
     book_clean = [
         "(Cei)",
+        "No Cost (CEI)",
         "(Loose-Leaf)",
         "Loose-Leaf",
         "Ebook - Lifetime Duration",
@@ -296,9 +295,12 @@ def get_string_cleaners():
         "Ebook - Lifetime",
         "Ebook - 180Days",
         "Etext W/Connect Access Code",
+        "W/Connect Access Code",
+        "W/ Connect Access Code PKG",
         "[Qr]",
+        "(Qr)",
+        "- [Qr Code]",
         "[Nbs]",
-        "(Cei)",
         "(Ll)",
         "W/1 Term Access Code Pkg",
         "W/1 Year Access Code Pkg",
@@ -306,6 +308,7 @@ def get_string_cleaners():
         "1 Term Access Code",
         "1 Year Access Code",
         "2 Year Access Code",
+        "Perusall Edition",
         "Ebook",
         "(5Th Edition)",
         "Update Etext W/ Achieve",
