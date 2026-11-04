@@ -5,3 +5,4 @@ selenium
 lxml
 requests
 xlsxwriter
+titlecase
