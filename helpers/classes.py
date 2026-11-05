@@ -112,12 +112,22 @@ def get_max_courses(book_list):
 def get_max_sections_list(book_list, course_amt):
     """Gets the values for how many section columns to put per course numbering."""
     sec_len = []
+    course1_section_limit = 28
+    course2_section_limit = 10
+
     for idx in range(course_amt):
         sec_len.append(0)
         for book in book_list:
             try:
                 next_largest = sorted(book.sec_size, reverse=True)[idx]
                 sec_len[idx] = max(next_largest, sec_len[idx])
+
+                """Enforce Section Limits in output sheet for Courses 1 and 2"""
+                if idx == 0:
+                    sec_len[idx] = min(sec_len[idx], course1_section_limit)
+                elif idx == 1:
+                    sec_len[idx] = min(sec_len[idx], course2_section_limit)
+
             except BaseException:
                 # no more to check for the given book
                 pass
