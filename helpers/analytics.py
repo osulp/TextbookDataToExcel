@@ -375,6 +375,10 @@ def process_analytics(analytics_driver, isbn):
             if location == "Valley Reserves Suppressed":
                 continue
 
+            # don't use BNC records as base for Primo lookup
+            if location == "Champinefu Lodge":
+                continue
+
             if year is None:
                 year = listing["Earliest Possible Publication Year"]
 
