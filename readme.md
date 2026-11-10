@@ -1,5 +1,5 @@
-# Master Textbook PrePurchasing Excel Script
-Hello! This script aims to consolidate many projects that have been spun up to reduce amounts of manual data entry hours in regards to textbook data management as well as prepurchasing workflows. The hope is that this will remain functional, updateable / modifiable, as well as compatible with prior implementations of workflows.
+# Textbook PrePurchasing Excel Script
+This script aims to consolidate many projects that have been spun up to reduce amounts of manual data entry hours in regards to textbook data management as well as prepurchasing workflows. The hope is that this will remain functional, updateable / modifiable, as well as compatible with prior implementations of workflows.
 
 The guide about how to use and setup this script will focus on the GUI portion of the implementations. There is a CLI version available, but it will not be updated and maintained as closely.
 
@@ -8,7 +8,7 @@ As a forewarning, this is a very large script, split across several files to hel
 ## Getting Started
 This script requires having Google Chrome and Python installed.
 
-To download the script, navigate to [here](https://github.com/meows4h/TextbookDataToExcel/releases/). Go to the latest release and download the ZIP file.
+To download the script, navigate to [here](https://github.com/osulp/TextbookDataToExcel/releases/). Go to the latest release and download the ZIP file.
 
 Setting up the script is fairly easy, but it requires some data to be loaded beforehand. A CORE report of the desired term must be exported into a csv file and placed within `helpers/csv/` as `enrollment.csv`. This directory and file name requirement can be changed in `config.ini`, but is not required whatsoever.
 
