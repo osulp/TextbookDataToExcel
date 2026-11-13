@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 
 # from openpyxl.utils.dataframe import dataframe_to_rows
 
@@ -14,6 +15,9 @@ def get_enrollment_data(dir, instructor_dict={}):
     enrollment_dict = {}
 
     for idx, course in enumerate(df["COURSE_IDENTIFICATION"]):
+
+        # add space to course to match rest of script
+        course = re.sub(r"(.*[A-Z])([0-9])", r"\1 \2", course)
 
         # course & section details
         section = df["OFFERING_NUMBER"][idx]
